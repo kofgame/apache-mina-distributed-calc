@@ -1,5 +1,6 @@
-package home.poc.mina;
+package home.poc.mina.calculator;
 
+import home.poc.mina.calculator.Operation;
 import home.poc.mina.client.CalcClient;
 import home.poc.mina.client.CalcClientHandler;
 import home.poc.mina.server.CalcServer;

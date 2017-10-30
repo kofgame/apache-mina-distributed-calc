@@ -1,7 +1,7 @@
 package home.poc.mina.server;
 
 
-import home.poc.mina.Operation;
+import home.poc.mina.calculator.Operation;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import home.poc.mina.calculator.DummyCalculator;

@@ -1,4 +1,4 @@
-package home.poc.mina;
+package home.poc.mina.calculator;
 
 
 public enum Operation {
