@@ -10,7 +10,7 @@ public class DummyCalculator {
 
     public int calculate(Operation operation, List<Integer> args) {
         validateInputArguments(args);
-        int result = 0;
+        int result = args.remove(0);
         switch(operation) {
             case PLUS:
                 for (Integer arg : args) {
@@ -18,7 +18,6 @@ public class DummyCalculator {
                 }
                 return result;
             case MINUS:
-                result = args.remove(0);
                 for (Integer arg : args) {
                     result -= arg;
                 }
@@ -29,7 +28,6 @@ public class DummyCalculator {
                 }
                 return result;
             case DIVIDE:
-                result = args.remove(0);
                 for (Integer arg : args) {
                     result /= arg;
                 }

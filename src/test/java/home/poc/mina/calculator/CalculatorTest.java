@@ -19,6 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
 
+import static home.poc.mina.calculator.Operation.DIVIDE;
+import static home.poc.mina.calculator.Operation.MINUS;
+import static home.poc.mina.calculator.Operation.PLUS;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:META-INF/application-context-root.xml")
@@ -42,7 +46,7 @@ public class CalculatorTest {
 
     @Test
     public void testPlus() throws Exception {
-        calcClient.sendCalcRequest("PLUS 3 4 5 0");
+        calcClient.sendCalcRequest(PLUS + " 3 4 5 0");
 
         Mockito.verify(spyCalcClientHandler).messageReceived(ioSessionArgCaptor.capture(), respMessageArgCaptor.capture());
         Assert.assertEquals("RESULT 12", respMessageArgCaptor.getValue());
@@ -50,7 +54,7 @@ public class CalculatorTest {
 
     @Test
     public void testMinus() throws Exception {
-        calcClient.sendCalcRequest("MINUS 24 4 10 5");
+        calcClient.sendCalcRequest(MINUS + " 24 4 10 5");
 
         Mockito.verify(spyCalcClientHandler).messageReceived(ioSessionArgCaptor.capture(), respMessageArgCaptor.capture());
         Assert.assertEquals("RESULT 5", respMessageArgCaptor.getValue());
@@ -58,10 +62,18 @@ public class CalculatorTest {
 
     @Test
     public void testDivide() throws Exception {
-        calcClient.sendCalcRequest("DIVIDE 64 8 4 2");
+        calcClient.sendCalcRequest(DIVIDE + " 64 8 4 2");
 
         Mockito.verify(spyCalcClientHandler).messageReceived(ioSessionArgCaptor.capture(), respMessageArgCaptor.capture());
         Assert.assertEquals("RESULT 1", respMessageArgCaptor.getValue());
+    }
+
+    @Test
+    public void testMultiply() throws Exception {
+        calcClient.sendCalcRequest(Operation.MULTIPLY + " 2 3 4");
+
+        Mockito.verify(spyCalcClientHandler).messageReceived(ioSessionArgCaptor.capture(), respMessageArgCaptor.capture());
+        Assert.assertEquals("RESULT 24", respMessageArgCaptor.getValue());
     }
 
     @Test
